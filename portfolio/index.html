@@ -147,68 +147,6 @@
         @keyframes orbitSpin {
             to { transform: rotate(360deg); }
         }
-
-        /* ================================
-           Responsive Hero Circle Fix
-           Prevents the orbit circle from being cut on mobile screens
-        ================================ */
-        .hero-section,
-        .hero-profile-area,
-        .hero-profile-wrapper {
-            overflow: visible !important;
-        }
-
-        .hero-profile-wrapper {
-            isolation: isolate;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                min-height: auto !important;
-                padding-top: 7rem !important;
-                padding-bottom: 5rem !important;
-            }
-
-            .hero-profile-area {
-                margin-top: 2.5rem;
-                padding-top: 2rem;
-                padding-bottom: 2.5rem;
-            }
-
-            .hero-profile-wrapper {
-                width: 270px !important;
-                height: 270px !important;
-            }
-
-            .hero-orbit {
-                inset: -10px !important;
-            }
-
-            .hero-orbit.reverse {
-                inset: -20px !important;
-            }
-
-            .hero-dot {
-                width: 10px !important;
-                height: 10px !important;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .hero-profile-wrapper {
-                width: 245px !important;
-                height: 245px !important;
-            }
-
-            .hero-orbit {
-                inset: -8px !important;
-            }
-
-            .hero-orbit.reverse {
-                inset: -16px !important;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -407,7 +345,7 @@
         const Hero = () => {
 
             return (
-                <section id="home" className="hero-section min-h-screen flex items-center justify-center relative pt-24 overflow-visible">
+                <section id="home" className="min-h-screen flex items-center justify-center relative pt-24 overflow-hidden">
                     <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse"></div>
                     <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[100px]" style={{animation: 'pulse 4s infinite reverse'}}></div>
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,242,234,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(255,0,85,0.08),transparent_30%)]"></div>
@@ -443,9 +381,9 @@
                             initial={{ opacity: 0, scale: 0.92, y: 30 }} 
                             animate={{ opacity: 1, scale: 1, y: 0 }} 
                             transition={{ duration: 0.8, delay: 0.2 }} 
-                            className="hero-profile-area relative flex justify-center md:justify-end overflow-visible"
+                            className="relative flex justify-center md:justify-end"
                         >
-                            <div className="hero-profile-wrapper relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] md:w-[430px] md:h-[430px] overflow-visible">
+                            <div className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] md:w-[430px] md:h-[430px]">
                                 <div className="hero-orbit"><span className="hero-dot dot-one"></span></div>
                                 <div className="hero-orbit reverse"><span className="hero-dot dot-two"></span></div>
                                 <div className="absolute -inset-5 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-full blur-2xl"></div>
