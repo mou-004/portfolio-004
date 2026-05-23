@@ -23,12 +23,12 @@
                         mono: ['Space Grotesk', 'monospace'],
                     },
                     colors: {
-                        primary: '#35858E',
-                        secondary: '#E6EEC9',
-                        accent: '#7DA78C',
-                        soft: '#C2D099',
-                        dark: '#14383D',
-                        card: '#1F4D54',
+                        primary: '#38BDF8',
+                        secondary: '#8B5CF6',
+                        accent: '#14B8A6',
+                        soft: '#E0F2FE',
+                        dark: '#0F172A',
+                        card: '#111827',
                     }
                 }
             }
@@ -50,39 +50,39 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #14383D;
+            background: #0F172A;
         }
         ::-webkit-scrollbar-thumb {
-            background: #7DA78C;
+            background: #334155;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #35858E;
+            background: #38BDF8;
         }
         body {
-            background-color: #14383D;
-            color: #E6EEC9;
+            background-color: #0F172A;
+            color: #F8FAFC;
             overflow-x: hidden;
         }
         .text-gradient {
-            background: linear-gradient(to right, #E6EEC9, #35858E);
+            background: linear-gradient(to right, #38BDF8, #8B5CF6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .glass-card {
-            background: rgba(7, 20, 38, 0.78);
+            background: rgba(17, 24, 39, 0.78);
             backdrop-filter: blur(12px);
         }
 
         .logo-rainbow {
             display: inline-block;
-            background: linear-gradient(90deg, #E6EEC9, #35858E, #7DA78C, #E6EEC9);
+            background: linear-gradient(90deg, #38BDF8, #8B5CF6, #14B8A6, #38BDF8);
             background-size: 400% 400%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: logoColorFlow 3s linear infinite, logoFloat 2.4s ease-in-out infinite;
-            filter: drop-shadow(0 0 14px rgba(0, 242, 234, 0.45));
+            filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.45));
         }
         .logo-rainbow:hover {
             transform: scale(1.08) rotate(-2deg);
@@ -106,7 +106,7 @@
             position: absolute;
             inset: -2px;
             border-radius: 1.25rem;
-            background: conic-gradient(from 0deg, #35858E, #E6EEC9, #C2D099, #35858E);
+            background: conic-gradient(from 0deg, #38BDF8, #8B5CF6, #14B8A6, #38BDF8);
             animation: borderSpin 4s linear infinite;
             z-index: -2;
         }
@@ -115,7 +115,7 @@
             position: absolute;
             inset: 1px;
             border-radius: 1.15rem;
-            background: #14383D;
+            background: #0F172A;
             z-index: -1;
         }
         @keyframes borderSpin {
@@ -124,13 +124,13 @@
         .hero-orbit {
             position: absolute;
             inset: -20px;
-            border: 1px dashed rgba(0, 242, 234, 0.45);
+            border: 1px dashed rgba(56, 189, 248, 0.45);
             border-radius: 9999px;
             animation: orbitSpin 12s linear infinite;
         }
         .hero-orbit.reverse {
             inset: -36px;
-            border-color: rgba(255, 0, 85, 0.35);
+            border-color: rgba(139, 92, 246, 0.35);
             animation-direction: reverse;
             animation-duration: 16s;
         }
@@ -139,11 +139,11 @@
             width: 12px;
             height: 12px;
             border-radius: 9999px;
-            background: #35858E;
-            box-shadow: 0 0 24px #35858E;
+            background: #38BDF8;
+            box-shadow: 0 0 24px #38BDF8;
         }
         .hero-dot.dot-one { top: 8%; right: 12%; }
-        .hero-dot.dot-two { bottom: 10%; left: 12%; background: #E6EEC9; box-shadow: 0 0 24px #E6EEC9; }
+        .hero-dot.dot-two { bottom: 10%; left: 12%; background: #8B5CF6; box-shadow: 0 0 24px #8B5CF6; }
         @keyframes orbitSpin {
             to { transform: rotate(360deg); }
         }
@@ -369,7 +369,7 @@
                                 
                                 <div className="flex gap-4 ml-1">
                                     {portfolioData.socials.map((social) => (
-                                        <motion.a key={social.name} whileHover={{ y: -5, color: '#35858E' }} href={social.url} target="_blank" rel="noreferrer" title={social.name} className="text-2xl text-gray-400 transition-colors">
+                                        <motion.a key={social.name} whileHover={{ y: -5, color: '#38BDF8' }} href={social.url} target="_blank" rel="noreferrer" title={social.name} className="text-2xl text-gray-400 transition-colors">
                                             <i className={`${social.name === "Email" ? "fas" : "fab"} ${social.icon}`}></i>
                                         </motion.a>
                                     ))}
@@ -519,120 +519,175 @@
             );
         };
 
-        const Projects = ({ setSelectedProject }) => {
-            return (
-                <section id="projects" className="py-20">
-                    <div className="container mx-auto px-6">
-                        <SectionTitle title="Featured Projects" subtitle="My Work" />
+       const Projects = ({ setSelectedProject }) => {
+    return (
+        <section id="projects" className="py-20">
+            <div className="container mx-auto px-6">
+                <SectionTitle title="Featured Projects" subtitle="My Work" />
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {portfolioData.projects.map((project, idx) => (
-                                <motion.div key={project.id} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.15 }} whileHover={{ y: -10 }} className="bg-card rounded-2xl overflow-hidden border border-soft/60 shadow-xl group h-full flex flex-col hover:border-soft transition-all">
-                                    <div className="h-56 overflow-hidden relative bg-secondary">
-                                        <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
-                                        <img src={project.image} alt={project.title} className="w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-500" />
-                                    </div>
-                                    <div className="p-6 flex flex-col flex-1">
-                                        <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors min-h-[56px]">{project.title}</h3>
-                                        <p className="text-gray-300 text-sm mb-4 leading-relaxed min-h-[96px]">{project.desc}</p>
-                                        <div className="flex flex-wrap gap-2 mb-6 min-h-[56px]">
-                                            {project.tech.slice(0, 4).map(t => (
-                                                <span key={t} className="text-xs bg-gray-800 px-2 py-1 rounded text-gray-300">{t}</span>
-                                            ))}
-                                        </div>
-                                        <button onClick={() => setSelectedProject(project)} className="mt-auto w-full h-12 flex items-center justify-center border border-primary text-primary rounded-lg hover:bg-primary hover:text-dark transition-all font-semibold">
-                                            View More / Details
-                                        </button>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const ProjectModal = ({ project, onClose }) => {
-            if (!project) return null;
-
-            return (
-                <AnimatePresence>
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] bg-dark/90 backdrop-blur-md flex items-center justify-center p-4"
-                        onClick={onClose}
-                    >
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {portfolioData.projects.map((project, idx) => (
                         <motion.div
-                            initial={{ scale: 0.92, y: 40, opacity: 0 }}
-                            animate={{ scale: 1, y: 0, opacity: 1 }}
-                            exit={{ scale: 0.92, y: 40, opacity: 0 }}
-                            transition={{ type: "spring", damping: 25, stiffness: 280 }}
-                            onClick={(e) => e.stopPropagation()}
-                            className="w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-[#1F4D54] border border-soft/70 rounded-3xl shadow-2xl text-secondary"
+                            key={project.id}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.15 }}
+                            whileHover={{ y: -10 }}
+                            className="bg-[#0F172A] rounded-2xl overflow-hidden border border-[#38BDF8]/35 shadow-xl group h-full flex flex-col hover:border-[#38BDF8] transition-all"
                         >
-                            <button
-                                onClick={onClose}
-                                className="sticky top-5 float-right mr-5 mt-5 z-20 w-11 h-11 bg-dark rounded-full text-secondary hover:bg-accent transition-colors flex items-center justify-center"
-                            >
-                                <i className="fas fa-times"></i>
-                            </button>
+                            <div className="h-56 overflow-hidden relative bg-gradient-to-br from-[#0F172A] via-[#1E3A5F] to-[#38BDF8]">
+                                <div className="absolute inset-0 bg-[#38BDF8]/10 opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-500"
+                                />
+                            </div>
 
-                            <div className="grid lg:grid-cols-2 gap-8 p-6 md:p-10 clear-both">
-                                <div className="bg-secondary rounded-2xl p-4 flex items-center justify-center">
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="w-full h-[260px] md:h-[380px] object-contain"
-                                    />
+                            <div className="p-6 flex flex-col flex-1">
+                                <h3 className="text-xl font-bold mb-2 group-hover:text-[#38BDF8] transition-colors min-h-[56px] text-[#F8FAFC]">
+                                    {project.title}
+                                </h3>
+
+                                <p className="text-[#CBD5E1] text-sm mb-4 leading-relaxed min-h-[96px]">
+                                    {project.desc}
+                                </p>
+
+                                <div className="flex flex-wrap gap-2 mb-6 min-h-[56px]">
+                                    {project.tech.slice(0, 4).map(t => (
+                                        <span
+                                            key={t}
+                                            className="text-xs bg-[#1E293B] px-2 py-1 rounded text-[#E0F2FE] border border-[#38BDF8]/20"
+                                        >
+                                            {t}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                <button
+                                    onClick={() => setSelectedProject(project)}
+                                    className="mt-auto w-full h-12 flex items-center justify-center border border-[#38BDF8] text-[#38BDF8] rounded-lg hover:bg-[#38BDF8] hover:text-[#020617] transition-all font-semibold"
+                                >
+                                    View More
+                                </button>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const ProjectModal = ({ project, onClose }) => {
+    if (!project) return null;
+
+    return (
+        <AnimatePresence>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[100] bg-[#020617]/90 backdrop-blur-md flex items-center justify-center p-4"
+                onClick={onClose}
+            >
+                <motion.div
+                    initial={{ scale: 0.92, y: 40, opacity: 0 }}
+                    animate={{ scale: 1, y: 0, opacity: 1 }}
+                    exit={{ scale: 0.92, y: 40, opacity: 0 }}
+                    transition={{ type: "spring", damping: 25, stiffness: 280 }}
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-[#0F172A] border border-[#38BDF8]/40 rounded-3xl shadow-2xl text-[#F8FAFC]"
+                >
+                    <button
+                        onClick={onClose}
+                        className="sticky top-5 float-right mr-5 mt-5 z-20 w-11 h-11 bg-[#020617] rounded-full text-[#E0F2FE] hover:bg-[#1E3A5F] transition-colors flex items-center justify-center"
+                    >
+                        <i className="fas fa-times"></i>
+                    </button>
+
+                    <div className="grid lg:grid-cols-2 gap-8 p-6 md:p-10 clear-both">
+                        <div className="bg-[#F8FAFC] rounded-2xl p-4 flex items-center justify-center">
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                className="w-full h-[260px] md:h-[380px] object-contain"
+                            />
+                        </div>
+
+                        <div>
+                            <h2 className="text-3xl md:text-4xl font-black text-[#F8FAFC] mb-2">
+                                {project.title}
+                            </h2>
+
+                            <p className="text-[#38BDF8] font-bold mb-5">
+                                Project Details
+                            </p>
+
+                            <div className="mb-6">
+                                <h3 className="text-xl font-bold mb-3 text-[#38BDF8]">
+                                    Main Technology Stack
+                                </h3>
+
+                                <div className="flex flex-wrap gap-3">
+                                    {project.tech.map(t => (
+                                        <span
+                                            key={t}
+                                            className="px-4 py-2 bg-[#020617] text-[#E0F2FE] border border-[#38BDF8]/50 rounded-full text-sm font-medium"
+                                        >
+                                            {t}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="space-y-5">
+                                <div>
+                                    <h3 className="text-xl font-bold mb-2 text-[#F8FAFC]">
+                                        Brief Description
+                                    </h3>
+                                    <p className="text-[#CBD5E1] leading-relaxed">
+                                        {project.desc}
+                                    </p>
                                 </div>
 
                                 <div>
-                                    <h2 className="text-3xl md:text-4xl font-black text-secondary mb-2">{project.title}</h2>
-                                    <p className="text-soft font-bold mb-5">Project Details</p>
+                                    <h3 className="text-xl font-bold mb-2 text-[#F8FAFC]">
+                                        Challenges Faced
+                                    </h3>
+                                    <p className="text-[#CBD5E1] leading-relaxed">
+                                        {project.challenges}
+                                    </p>
+                                </div>
 
-                                    <div className="mb-6">
-                                        <h3 className="text-xl font-bold mb-3 text-soft">Main Technology Stack</h3>
-                                        <div className="flex flex-wrap gap-3">
-                                            {project.tech.map(t => (
-                                                <span key={t} className="px-4 py-2 bg-dark text-secondary border border-soft rounded-full text-sm font-medium">{t}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-5">
-                                        <div>
-                                            <h3 className="text-xl font-bold mb-2 text-secondary">Brief Description</h3>
-                                            <p className="text-gray-300 leading-relaxed">{project.desc}</p>
-                                        </div>
-                                        <div>
-                                            <h3 className="text-xl font-bold mb-2 text-secondary">Challenges Faced</h3>
-                                            <p className="text-gray-300 leading-relaxed">{project.challenges}</p>
-                                        </div>
-                                        <div>
-                                            <h3 className="text-xl font-bold mb-2 text-secondary">Potential Improvements & Future Plans</h3>
-                                            <p className="text-gray-300 leading-relaxed">{project.improvements}</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="mt-8">
-                                        <a
-                                            href={project.liveLink}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="block w-full py-3 border border-soft text-soft font-bold text-center rounded-xl hover:bg-primary hover:text-secondary transition-colors"
-                                        >
-                                            <i className="fas fa-globe mr-2"></i> Live Website
-                                        </a>
-                                    </div>
+                                <div>
+                                    <h3 className="text-xl font-bold mb-2 text-[#F8FAFC]">
+                                        Potential Improvements & Future Plans
+                                    </h3>
+                                    <p className="text-[#CBD5E1] leading-relaxed">
+                                        {project.improvements}
+                                    </p>
                                 </div>
                             </div>
-                        </motion.div>
-                    </motion.div>
-                </AnimatePresence>
-            );
-        };
+
+                            <div className="mt-8">
+                                <a
+                                    href={project.liveLink}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="block w-full py-3 border border-[#38BDF8] text-[#38BDF8] font-bold text-center rounded-xl hover:bg-[#38BDF8] hover:text-[#020617] transition-colors"
+                                >
+                                    <i className="fas fa-globe mr-2"></i> Live Website
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </motion.div>
+        </AnimatePresence>
+    );
+};
 
         const Contact = () => {
             return (
