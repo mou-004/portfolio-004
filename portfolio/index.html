@@ -40,7 +40,7 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     
     <!-- Babel -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.28.4/babel.min.js"></script>
 
     <!-- Framer Motion -->
     <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
@@ -190,7 +190,8 @@
 
     <div id="root"></div>
 
-    <script type="text/babel">
+    <script type="text/babel" data-presets="react">
+        /** @jsxRuntime classic */
         const { useState, useEffect } = React;
         const { motion, AnimatePresence } = window.Motion;
 
